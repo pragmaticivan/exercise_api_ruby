@@ -19,3 +19,6 @@
 
 # Ignore Rvm Gemset
 .ruby-gemset
+
+# Coverage files
+coverage
