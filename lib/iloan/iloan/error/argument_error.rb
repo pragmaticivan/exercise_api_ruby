@@ -1,5 +1,5 @@
 module Iloan
-  module Exceptions
+  module Error
     class ArgumentError < ::ArgumentError
     end
   end
