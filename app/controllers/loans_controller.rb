@@ -5,7 +5,7 @@ class LoansController < ApplicationController
   end
 
   def index
-    render json: Loan.all
+    render json: Iloan::Loan::Queries::OrderedLoans.new.call
   end
 
   def show
