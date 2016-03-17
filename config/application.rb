@@ -8,6 +8,34 @@ Bundler.require(*Rails.groups)
 
 module PaymentsExercise
   class Application < Rails::Application
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.test_framework :rspec,
+                       fixtures: true,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       controller_specs: true,
+                       request_specs: true
+      g.fixture_replacement :fabrication
+    end
+
+    config.middleware.insert_before 0, 'Rack::Cors', debug: true, logger: (-> { Rails.logger }) do
+      allow do
+        origins '*'
+        resource '*',
+                 headers: :any,
+                 methods: [:get, :post, :delete, :put, :options, :head],
+                 expose: ['X-Per-Page', 'X-Total', 'X-Total-Pages', 'X-Offset', 'X-Next-Page', 'X-Page', 'X-Prev-Page'],
+                 max_age: 0
+      end
+    end
+
+    # Makes the app follow internationalization pattern
+    config.time_zone = 'UTC'
+    config.active_record.default_timezone = :utc
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
