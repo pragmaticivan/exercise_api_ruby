@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module PaymentsExercise
   class Application < Rails::Application
+
+    config.eager_load_paths += ["#{Rails.root}/lib/iloan"]
+    config.autoload_paths += Dir[Rails.root.join('lib', 'iloan', '**')]
+
     config.generators do |g|
       g.stylesheets false
       g.javascripts false

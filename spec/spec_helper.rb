@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'iloan/iloan'
 SimpleCov.start 'rails'
 puts "required simplecov"
 
