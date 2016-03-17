@@ -9,8 +9,13 @@ Bundler.require(*Rails.groups)
 module PaymentsExercise
   class Application < Rails::Application
 
+    # Lib
     config.eager_load_paths += ["#{Rails.root}/lib/iloan"]
     config.autoload_paths += Dir[Rails.root.join('lib', 'iloan', '**')]
+
+    # Grape API
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
 
     config.generators do |g|
       g.stylesheets false

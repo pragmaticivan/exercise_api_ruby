@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317065238) do
+ActiveRecord::Schema.define(version: 20160317091459) do
 
   create_table "loans", force: :cascade do |t|
     t.integer  "funded_amount"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20160317065238) do
   create_table "payments", force: :cascade do |t|
     t.integer  "amount"
     t.integer  "loan_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.date     "payment_date"
   end
 
   add_index "payments", ["loan_id"], name: "index_payments_on_loan_id"

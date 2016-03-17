@@ -1,4 +1,5 @@
 Fabricator(:payment) do
   amount 1
-  loan 
+  payment_date { Date.today }
+  loan
 end

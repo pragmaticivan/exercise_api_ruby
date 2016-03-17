@@ -18,6 +18,7 @@ module Iloan
 
         def create_payment
           payment = ::Payment.new(@attribute_data)
+          payment.loan = @loan
           payment.save!
           payment
         end
